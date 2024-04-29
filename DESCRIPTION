@@ -1,0 +1,18 @@
+Package: example
+Type: Package
+Title: An Example R Package
+Version: 0.1.0
+Authors@R: c(
+    person("Daphné", "Grasselly", , "daphne.gr.grasselly@roche.com", role = c("aut", "cre"))
+  )
+Description:
+    A brief description of what the package does.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    dplyr,
+    ggplot2
+Suggests:
+    testthat,
+    knitr
