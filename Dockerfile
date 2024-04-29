@@ -7,7 +7,7 @@ FROM rocker/rstudio:$R_VERSION
 WORKDIR /workspace
 COPY ./DESCRIPTION /workspace/
 
-# Install dependencies
+# Install dependencies 
 RUN R -e 'options(repos = c("https://cran.r-project.org")); \
         install.packages("remotes"); \
         remotes::install_local(path = ".", force = FALSE, dependencies = TRUE, upgrade = FALSE)'

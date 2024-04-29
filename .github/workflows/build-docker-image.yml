@@ -2,9 +2,10 @@ name: Deploy Docker Image
 
 on:
   # for each change in DESCRIPTION/Dockerfile (main branch) this job will be triggered
-  pull_request:
+  push:
     branches:
       - main
+      - codespaces_conf # for debuging
     paths:
       - DESCRIPTION
       - Dockerfile
