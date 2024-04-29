@@ -10,6 +10,7 @@
 		"RENV_AUTOLOADER_ENABLED": "false"
 	},
 
+	"init": true,
 	"overrideCommand": false, // do not override default docker CMD
 
 	// onCreateCommand: final step at container setup when a dev container is created.
