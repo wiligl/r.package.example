@@ -29,6 +29,11 @@ jobs:
 
     steps:
 
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       # Install QEMU and buildx for multi platform images (see https://docs.docker.com/build/building/multi-platform/)
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -39,7 +44,7 @@ jobs:
         id: buildx
         with:
           install: true
-        
+
       # Set up cache (it will accelerate docker builds reusing the cache)
       - name: Cache Docker layers ♻️
         uses: actions/cache@v3
