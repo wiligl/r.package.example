@@ -25,9 +25,9 @@ env:
     checkout_repository
 #    setup_r
 #    setup_dependencies
-#    get_package_name
-#    build_r_package
-#    run_r_cmd_check
+#    package_name
+#    package_build
+#    package_check
 #    upload_artifact
 
 jobs:
@@ -66,6 +66,10 @@ jobs:
         # We're using a third-party GitHub Action.
         uses: r-lib/actions/setup-r@v2
 
+      - name: Hello from R! 💬
+        run: cat("Hello from R! 👋")
+        shell: Rscript {0}
+
       - name: Setup R dependencies 🔧
         # We're using a third-party GitHub Action.
         uses: r-lib/actions/setup-r-dependencies@v2
@@ -73,11 +77,15 @@ jobs:
         with:
           working-directory: ${{ github.event.repository.name }}
 
+      - name: Installed packages 📦
+        run: rownames(installed.packages())
+        shell: Rscript {0}
+
       # Get package name and version from DESCRIPTION so that we'll know
       # what's the name of the tar.gz file with the built package.
       # pkgbuild is set as an output which can be accessed by subsequent steps.
       - name: Get package name 📦
-        if: contains(env.ENABLED_STEPS, 'get_package_name')
+        if: contains(env.ENABLED_STEPS, 'package_name')
         id: package-name
         run: |
           PKGBUILD="$(Rscript -e 'cat(sprintf("%s_%s.tar.gz",(dcf <- read.dcf("DESCRIPTION"))[,"Package"], dcf[,"Version"]))')"
@@ -89,23 +97,23 @@ jobs:
       # Build a package stored in a directory called ${{ github.event.repository.name }}
       # --no-manual --no-build-vignettes because this requires LaTeX.
       - name: Build R package 🏗
-        if: contains(env.ENABLED_STEPS, 'build_r_package')
+        if: contains(env.ENABLED_STEPS, 'package_build')
         run: |
           R CMD build --no-manual --no-build-vignettes ${{ github.event.repository.name }}
           ls -l
         shell: bash
 
-      # Check tar.gz package built in previous step.
+      # Check `.tar.gz` package built in previous step.
       # --no-manual --no-vignettes because this requires LaTeX.
-      - name: Run R CMD check 🏁
-        if: contains(env.ENABLED_STEPS, 'run_r_cmd_check')
+      - name: Check R package 🏁
+        if: contains(env.ENABLED_STEPS, 'package_check')
         run: |
           env | grep -E '^_R'
           echo "Let's run R CMD check..."
           R CMD check ${EXTRA_CHECK_FLAGS} ${{ steps.package-name.outputs.pkgbuild }}
         shell: bash
 
-      - name: Get tar.gz file name
+      - name: Get `.tar.gz` file name
         if: contains(env.ENABLED_STEPS, 'upload_artifact')
         id: tar-gz
         # Use our custom action.
@@ -113,7 +121,7 @@ jobs:
         with:
           filename-beginning: ${{ github.event.repository.name }}
 
-      # Upload tar.gz package as an artifact so it can be downloaded.
+      # Upload `.tar.gz` package as an artifact so it can be downloaded.
       - name: Upload package build ⤴
         if: contains(env.ENABLED_STEPS, 'upload_artifact')
         uses: actions/upload-artifact@v4
