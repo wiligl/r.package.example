@@ -1,18 +1,15 @@
-Package: example
-Type: Package
-Title: An Example R Package
-Version: 0.1.0
-Authors@R: c(
-    person("Daphné", "Grasselly", , "daphne.gr.grasselly@roche.com", role = c("aut", "cre"))
-  )
-Description:
-    A brief description of what the package does.
+Package: r.package.example
+Title: An example package for the workshop
+Version: 0.0.0.9000
+Authors@R:
+    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
+Description: This is an empty dummy package.
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
 Imports:
-    dplyr,
-    ggplot2
+    cli
 Suggests:
-    testthat,
-    knitr
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
