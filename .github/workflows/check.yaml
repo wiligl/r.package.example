@@ -43,10 +43,18 @@ jobs:
       image: "ghcr.io/user-workshop-cicd/r-pkg-example:4.3"
 
     steps:
+      # note : we can not use reusable workflow build-check-install.yaml@main within container context (only actions)
       - name: Checkout repo
         uses: actions/checkout@v4.1.1
         with:
           path: ${{ github.event.repository.name }}
+
+      - name: Running R CMD Check using r-pkg-example:4.3 image
+        run: |
+          echo "ls"
+          ls
+          echo "ls workspace"
+          ls /workspace
 
       - name: Running R CMD Check using r-pkg-example:4.3 image
         run: |
