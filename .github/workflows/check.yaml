@@ -55,7 +55,8 @@ jobs:
           ls
           echo "ls workspace"
           ls /workspace
+          ls ${{ github.workspace }}
 
       - name: Running R CMD Check using r-pkg-example:4.3 image
         run: |
-          R CMD check .
+          R CMD check ${{ github.workspace }}
