@@ -41,4 +41,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: "ghcr.io/user-workshop-cicd/r-pkg-example:4.3"
-    uses: insightsengineering/r.pkg.template/.github/workflows/build-check-install.yaml@main
+
+    steps:
+      - name: Running R CMD Check using r-pkg-example:4.3 image
+        run: |
+          R CMD check
