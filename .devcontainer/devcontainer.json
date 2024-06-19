@@ -6,8 +6,7 @@
 	"containerEnv": {
 		"ROOT": "true",
 		"PASSWORD": "rstudio",
-		"DISABLE_AUTH": "true",
-		"RENV_AUTOLOADER_ENABLED": "false"
+		"DISABLE_AUTH": "true"
 	},
 
 	"init": true,

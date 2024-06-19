@@ -70,8 +70,6 @@ jobs:
           tags: "${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.R_VERSION }}"
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
-          build-args: |
-            R_VERSION=${{ env.R_VERSION }}
           platforms: ${{ env.PLATFORMS }}
 
       - name: Move cache ♻️

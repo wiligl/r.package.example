@@ -1,7 +1,5 @@
-ARG R_VERSION="4.3"
-
 # Fetch base image
-FROM rocker/rstudio:$R_VERSION
+FROM rocker/rstudio:4.3
 
 # Set up workspace and copy dependencies
 WORKDIR /workspace

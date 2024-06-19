@@ -13,6 +13,7 @@ on:
   push:
     branches:
       - main
+      - codespaces_conf
 
 # This reusable workflow from insightsengineering/r.pkg.template will run once a PR to main branch is created.
 jobs:
@@ -34,3 +35,13 @@ jobs:
     uses: insightsengineering/r.pkg.template/.github/workflows/build-check-install.yaml@main
     if: >
       needs.job-setup.outputs.check_out == 'true'
+
+  job-setup-with-docker:
+    name: Should we run R CMD check?
+    runs-on: ubuntu-latest
+    container:
+      image: "ghcr.io/user-workshop-cicd/r-pkg-example:4.3"
+    if: true
+    steps:
+      - name: To check or not to check?
+        uses: insightsengineering/r.pkg.template/.github/workflows/build-check-install.yaml@main
