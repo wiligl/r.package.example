@@ -75,5 +75,5 @@ jobs:
       - name: Check R package 🏁
         run: |
           echo "Let's run R CMD check..."
-          R CMD check ${EXTRA_CHECK_FLAGS} ${{ steps.package-name.outputs.pkgbuild }}
+          R CMD check --no-manual --no-build-vignettes ${{ steps.package-name.outputs.pkgbuild }}
         shell: bash
