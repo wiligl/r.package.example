@@ -43,6 +43,11 @@ jobs:
       image: "ghcr.io/user-workshop-cicd/r-pkg-example:4.3"
 
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4.1.1
+        with:
+          path: ${{ github.event.repository.name }}
+
       - name: Running R CMD Check using r-pkg-example:4.3 image
         run: |
           R CMD check .
