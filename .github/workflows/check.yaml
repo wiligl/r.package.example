@@ -57,6 +57,7 @@ jobs:
           ls /workspace
           echo $$GITHUB_WORKSPACE
           ls $GITHUB_WORKSPACE
+          ls "$GITHUB_WORKSPACE/r.package.example"
 
       - name: Running R CMD Check using r-pkg-example:4.3 image
         run: |
