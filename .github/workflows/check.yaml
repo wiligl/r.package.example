@@ -49,16 +49,11 @@ jobs:
         with:
           path: ${{ github.event.repository.name }}
 
-      - name: Running R CMD Check using r-pkg-example:4.3 image
+      - name: debug
         run: |
-          echo "ls"
-          ls
-          echo "ls workspace"
-          ls /workspace
-          echo $$GITHUB_WORKSPACE
-          ls $GITHUB_WORKSPACE
           ls "$GITHUB_WORKSPACE/r.package.example"
 
       - name: Running R CMD Check using r-pkg-example:4.3 image
         run: |
+          R CMD build --no-manual --no-build-vignettes "$GITHUB_WORKSPACE/r.package.example"
           R CMD check "$GITHUB_WORKSPACE/r.package.example"
