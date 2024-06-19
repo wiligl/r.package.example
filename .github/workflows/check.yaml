@@ -55,8 +55,9 @@ jobs:
           ls
           echo "ls workspace"
           ls /workspace
-          ls /github/workspace
+          echo $$GITHUB_WORKSPACE
+          ls $GITHUB_WORKSPACE
 
       - name: Running R CMD Check using r-pkg-example:4.3 image
         run: |
-          R CMD check /github/workspace
+          R CMD check $GITHUB_WORKSPACE
