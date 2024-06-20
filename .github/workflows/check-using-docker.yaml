@@ -13,7 +13,6 @@
       push:
         branches:
           - main
-          - codespaces_conf
 
     # This reusable workflow from insightsengineering/r.pkg.template will run once a PR to main branch is created.
     jobs:
@@ -22,7 +21,7 @@
         runs-on: ubuntu-latest
         container:
           image: "ghcr.io/user-workshop-cicd/r-pkg-example:4.3"
-        if: true
+        if: false
 
         steps:
           # Note : We can not use reusable workflow when the job runs on a container. Only Github Actions can be used.
