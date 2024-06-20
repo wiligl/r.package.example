@@ -36,8 +36,8 @@ jobs:
     if: >
       needs.job-setup.outputs.check_out == 'true'
 
-  job-setup-with-docker:
-    name: Let's run R CMD check using containers
+  r-cmd-with-docker:
+    name: R CMD Check 🧬 - Inside container 🐳
     runs-on: ubuntu-latest
     container:
       image: "ghcr.io/user-workshop-cicd/r-pkg-example:4.3"
