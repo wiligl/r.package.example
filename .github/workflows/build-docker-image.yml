@@ -1,4 +1,4 @@
-name: Deploy Docker Image
+name: Deploy Docker Image 🐳
 
 on:
   # for each change in DESCRIPTION/Dockerfile (main branch) this job will be triggered
