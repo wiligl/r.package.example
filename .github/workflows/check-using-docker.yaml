@@ -57,6 +57,6 @@
         # Print dependencies
         - name: Print deps
           run: |
-            echo "Let's print installed dependencies :"
+            cat("Let's print installed dependencies:\n")
             installed.packages()
-          shell: bash
+          shell: Rscript {0}
