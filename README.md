@@ -1,6 +1,6 @@
 # r.package.example
 
-Edit by Wilmar Igl
+Edit2 by Wilmar Igl
 
 An example package for the workshop.
 
